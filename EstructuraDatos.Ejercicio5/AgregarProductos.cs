@@ -15,7 +15,10 @@ namespace EstructuraDatos.Ejercicio5
                 string codigo = "";
                 while (true)
                 {
+                   
                     Console.WriteLine("Ingrese el código de producto:");
+
+
                     codigo = Console.ReadLine();
                     if (string.IsNullOrWhiteSpace(codigo))
                     {
@@ -168,6 +171,7 @@ namespace EstructuraDatos.Ejercicio5
                 producto.NombreCorto = nombreCorto;
                 producto.Costo = costo;
                 producto.Precio = precio;
+                Producto.Todos.Add(producto);
 
                 //ciclo de ingreso de componentes.
                 while (true)
@@ -179,25 +183,21 @@ namespace EstructuraDatos.Ejercicio5
                         break;
                     }
 
-                    bool ok = false;
-                    foreach (Producto productoYaIngresado in Producto.Todos)
-                    {
-                        if (componente == productoYaIngresado.Codigo)
-                        {
-                            ok = true;
-                            break;
-                        }
-                    }
-                    if (!ok)
-                    {
-                        Console.WriteLine("Debe ingresar el código de un producto existente.");
-                        continue;
-                    }
-
-                    producto.Componentes.Add(componente);
+                    var componentes = new Componente();
+                    componentes.CodigoProducto = producto.Codigo;
+                    componentes.Codigo = componente;
+                    Componente.Todos.Add(componentes);
+                    break;
                 }
 
-                Producto.Todos.Add(producto);
+        
+                Console.WriteLine("INGRESE 'S' PARA SALIR O CUALQUIER TECLA PARA CARGA OTRO PRODUCTO");
+                string exit = Console.ReadLine();
+                if (exit.ToLower() == "s")
+                {
+                   break;
+                }
+                
             }
         }
     }

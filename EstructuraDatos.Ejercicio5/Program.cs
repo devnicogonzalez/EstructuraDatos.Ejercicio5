@@ -1,5 +1,4 @@
 ﻿using EstructuraDatos.Ejercicio5;
-
-//MenuPrincipal.Mostrar();
-GrabarArchivo.Iniciar();
+LeerArchivo.Iniciar();
+MenuPrincipal.Mostrar();
 Console.WriteLine("Hasta luego!");

@@ -69,19 +69,18 @@ namespace EstructuraDatos.Ejercicio5
                     producto.NombreCorto + ";" +
                     producto.Descripcion + ";" +
                     producto.Costo?.ToString(CultureInfo.InvariantCulture) + ";" +
-                    producto.Precio.ToString(CultureInfo.InvariantCulture) + ";";
-
-                foreach (string componente in producto.Componentes)
-                {
-                    linea = linea + componente + "|";
-                }
-
-                if (linea.EndsWith("|"))
-                {
-                    linea = linea.Substring(0, linea.Length - 1);
-                }
+                    producto.Precio.ToString(CultureInfo.InvariantCulture); 
 
                 writer.WriteLine(linea);
+            }
+
+            using StreamWriter writerComp = File.CreateText("ProductosComponentes.txt");
+
+            foreach (Componente componente in Componente.Todos)
+            {
+                string lineaComp = componente.Codigo + ";" +
+                componente.CodigoProducto;
+                writerComp.WriteLine(lineaComp);
             }
         }
     }

@@ -16,5 +16,4 @@ internal class Producto
     public decimal? Costo { get; set; } /* ? => significa que puede ser un numero decimal o nulo */
     public decimal Precio { get; set; }
 
-    public List<string> Componentes { get; set; }
 }
